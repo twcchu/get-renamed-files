@@ -1,4 +1,4 @@
-name: Terraform Datadog Key Management
+name: Get Renamed Files
 on:
   push:
     branches:
