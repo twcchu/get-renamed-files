@@ -1,0 +1,31 @@
+name: Terraform Datadog Key Management
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  renamed_files:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0        
+
+      - name: Get Changed Files
+        id: files
+        uses: tj-actions/changed-files@v35.7.1
+        with:
+          files: |
+            *.tfvars
+          include_all_old_new_renamed_files: true
+
+      - name: Print renamed files
+        run: |
+          # check for renamed files
+          echo "all_old_new_renamed_files=${{ steps.files.outputs.all_old_new_renamed_files }}"
+          echo "only_renamed_files=${{ steps.files.outputs.renamed_files }}"
