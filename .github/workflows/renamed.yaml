@@ -18,7 +18,7 @@ jobs:
 
       - name: Get Changed Files
         id: files
-        uses: tj-actions/changed-files@v35.7.1
+        uses: tj-actions/changed-files@v35.7.6
         with:
           files: |
             *.tfvars
